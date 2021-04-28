@@ -22,7 +22,15 @@ class Log extends Model
      */
     public function remains ()
     {
-        return (int) $this->item->amount - $this->amount;
+        return (int) $this->item->amount - $this->totalSum($this->budget_item_id, $this->payment_date);
+    }
+
+
+
+    public function totalSum ($budgetId, $date)
+    {
+        $totals = $this->where('budget_item_id', $budgetId)->whereDate('payment_date', '<=', $date)->pluck('amount')->toArray();
+        return array_sum($totals);
     }
 
 
@@ -38,4 +46,12 @@ class Log extends Model
         'model.payment_date' => 'nullable|date',
         'model.amount' => 'integer',
     ];
+
+
+    public function defaultFieldValues ()
+    {
+        return [
+            'model.payment_date' => today()
+        ];
+    }
 }

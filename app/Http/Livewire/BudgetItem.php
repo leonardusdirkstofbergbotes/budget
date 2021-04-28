@@ -5,11 +5,10 @@ namespace App\Http\Livewire;
 use App\Models\Item;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Http\Livewire\Filters\TableFilters;
 
 class BudgetItem extends Component
 {
-    use WithPagination, TableFilters;
+    use WithPagination;
 
     public Item $model;
     public $search;
