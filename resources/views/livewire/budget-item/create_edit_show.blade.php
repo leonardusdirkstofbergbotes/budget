@@ -4,7 +4,7 @@
     >
         <x-slot name="modalContent">
             
-            @include('livewire.form_fields')
+            @include('livewire.budget-item.form_fields')
             
         </x-slot>    
 

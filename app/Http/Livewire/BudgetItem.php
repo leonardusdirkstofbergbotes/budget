@@ -7,7 +7,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Http\Livewire\Filters\TableFilters;
 
-class Budget extends Component
+class BudgetItem extends Component
 {
     use WithPagination, TableFilters;
 
@@ -28,7 +28,7 @@ class Budget extends Component
 
     public function render()
     {
-        return view('livewire.budget', [
+        return view('livewire.budget-item.budget', [
             'records' => $this->recordsQuery,
         ])->extends('layouts.master');
     }
@@ -93,6 +93,10 @@ class Budget extends Component
        if ($createAnother)
        {
            $this->resetModelFields();
+       }
+       else
+       {
+           $this->showForm = false;
        }
     }
 

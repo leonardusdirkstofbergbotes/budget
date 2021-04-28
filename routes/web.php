@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Livewire\Budget;
+use App\Http\Livewire\BudgetItem;
+use App\Http\Livewire\BudgetLog;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.master');
-});
-
-
-Route::get('/budget', Budget::class)->name('budget');
+Route::get('/budget', BudgetItem::class)->name('budget-item');
+Route::get('/log', BudgetLog::class)->name('budget-log');
 
