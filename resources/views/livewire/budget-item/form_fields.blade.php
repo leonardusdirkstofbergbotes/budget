@@ -14,11 +14,21 @@
 
     <!-- Category and Payment Date -->
     <div class="flex space-x-4">
-        <div>
-            <x-input.stacked.text field="model.category_id">Category</x-input.stacked.text>
+               
+        <div class="flex-1 space-y-1">
+            <label class="space-x-1">
+                <span class="text-gray-500 font-medium">Category</span>
+                <i data-tippy-content="This is a required field" class="text-red-400">*</i>
+            </label>
+
+            @livewire('components.select-with-search', ['model' => 'App\Models\Category', 'field' => 'model["category_id"]'])
+
+            @error('model.category_id')
+                <span class="text-red-500 text-sm">{{ $message }}</span>
+            @enderror
         </div>
 
-        <div>
+        <div class="flex-1">
             <x-input.stacked.text field="model.payment_date">Payment Date</x-input.stacked.text>
         </div>
     </div>
